@@ -1,10 +1,13 @@
 export class SubscriptionSystem {
+    static instance;
+
     constructor() {
         if (SubscriptionSystem.instance) {
             return SubscriptionSystem.instance;
         }
-        SubscriptionSystem.instance = this;
+
         this.subscriptions = [];
+        SubscriptionSystem.instance = this;
     }
 
     addSubscription(subscription) {
@@ -14,4 +17,12 @@ export class SubscriptionSystem {
     getSubscriptions() {
         return this.subscriptions;
     }
-}// Singleton Pattern
+
+    getStudentSubscriptions() {
+        return this.subscriptions.filter(subscription => subscription.isStudent);
+    }
+}
+
+
+// Singleton Pattern
+
